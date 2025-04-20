@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:my_fitness/colorList/colorList.dart' as app_colors;
 import 'package:my_fitness/views/components/caloriesCard.dart';
+import 'package:my_fitness/views/components/stepCard.dart';
+
+import 'components/InfoRow.dart';
+import 'components/weightCard.card.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -58,6 +62,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
           SizedBox(height: 15),
           CaloriesCard(),
+          SizedBox(height: 20,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              StepCard(),
+              WeightCard(),
+            ],
+          ),
+
         ],
       )),
     );

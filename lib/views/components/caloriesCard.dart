@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:my_fitness/colorList/colorList.dart' as app_colors;
-
 import 'InfoRow.dart';
 
 class CaloriesCard extends StatelessWidget {
