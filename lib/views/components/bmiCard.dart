@@ -6,7 +6,24 @@ class BMICard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double bmi = 22.25;
+    double bmi = 28.35;
+
+    double bmiMarkerPosition() {
+      double bmiPos = 0.0;
+      if (bmi >= 0 && bmi <= 18.5) {
+        bmiPos = bmi * 3.24 - 15;
+      } else if (bmi > 18.5 && bmi <= 24.5) {
+        bmiPos = 15 + ((bmi-18.5) * 11.6);
+      }else if (bmi > 24.5 && bmi <= 29.5) {
+        bmiPos = 85 + ((bmi-24.5) * 14);
+      }else if (bmi > 29.5 && bmi <= 34.5) {
+        bmiPos = 155 + ((bmi-29.5) * 13);
+      }else if (bmi > 34.5 && bmi <= 40) {
+        bmiPos = 220 + ((bmi-34.5) * 12.72);
+      }
+
+      return bmiPos;
+    }
 
     int getSegmentIndex(double bmi) {
       if (bmi < 18.5) return 0;
@@ -26,11 +43,13 @@ class BMICard extends StatelessWidget {
 
     List<String> labels = [
       "Underweight",
-      "Healthy",
+      "Healthy weight",
       "Overweight",
       "Obese",
       "Extremely Obese",
     ];
+
+    int segmentIndex = getSegmentIndex(bmi);
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -42,40 +61,62 @@ class BMICard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          /// Top Row: BMI Value + Icon
-          Text(
-            "BMI (kg/m²): $bmi",
-            style: const TextStyle(
-                color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
+          /// BMI Text
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "BMI (kg/m²): $bmi",
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Icon(Icons.edit,color: Colors.white,size: 20,)
+            ],
           ),
 
           const SizedBox(height: 10),
 
-          /// Labels Above Segments
-          SizedBox(
-            width: double.infinity,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: List.generate(5, (index) {
-                return Expanded(
-                  child: Column(
-                    children: [
-                      if (index == getSegmentIndex(bmi))
-                        Text(
-                          labels[index],
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
+          /// Marker Label above bar
+          LayoutBuilder(
+            builder: (context, constraints) {
+              double bmiPosition = bmiMarkerPosition();
+
+              return Stack(
+                children: [
+                  Container(height: 40), // Reserve space for marker
+                  Positioned(
+                    left: bmiPosition,
+                    child: Column(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 4, horizontal: 8),
+                          decoration: BoxDecoration(
+                            color: colors[segmentIndex],
+                            borderRadius: BorderRadius.circular(8),
                           ),
-                        )
-                      else
-                        const SizedBox(height: 16),
-                    ],
+                          child: Text(
+                            labels[segmentIndex],
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_drop_down,
+                          color: colors[segmentIndex],
+                          size: 24,
+                        ),
+                      ],
+                    ),
                   ),
-                );
-              }),
-            ),
+                ],
+              );
+            },
           ),
 
           const SizedBox(height: 4),
@@ -98,16 +139,16 @@ class BMICard extends StatelessWidget {
 
           const SizedBox(height: 6),
 
-          /// Range values below each part
+          /// BMI Ranges
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const [
-              Text("<18.5", style: TextStyle(color: Colors.white, fontSize: 10)),
+              Text("0", style: TextStyle(color: Colors.white, fontSize: 10)),
               Text("18.5", style: TextStyle(color: Colors.white, fontSize: 10)),
-              Text("25", style: TextStyle(color: Colors.white, fontSize: 10)),
-              Text("30", style: TextStyle(color: Colors.white, fontSize: 10)),
-              Text("35", style: TextStyle(color: Colors.white, fontSize: 10)),
-              Text("40<", style: TextStyle(color: Colors.white, fontSize: 10)),
+              Text("24.5", style: TextStyle(color: Colors.white, fontSize: 10)),
+              Text("29.5", style: TextStyle(color: Colors.white, fontSize: 10)),
+              Text("34.5", style: TextStyle(color: Colors.white, fontSize: 10)),
+              Text("40", style: TextStyle(color: Colors.white, fontSize: 10)),
             ],
           ),
         ],
