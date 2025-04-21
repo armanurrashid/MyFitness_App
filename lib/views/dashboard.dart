@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:my_fitness/colorList/colorList.dart' as app_colors;
+import 'package:my_fitness/views/components/bmiCard.dart';
 import 'package:my_fitness/views/components/caloriesCard.dart';
 import 'package:my_fitness/views/components/stepCard.dart';
 
 import 'components/InfoRow.dart';
+import 'components/monthlySummaryTable.dart';
 import 'components/weightCard.card.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -21,6 +23,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       backgroundColor: app_colors.blackBackground,
       body: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             margin: EdgeInsets.only(left: 20, right: 20, top: 10),
@@ -35,6 +38,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   "My Fitness",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
+                      fontStyle: FontStyle.italic,
                       fontSize: 30,
                       color: app_colors.appTitle),
                 ),
@@ -46,20 +50,29 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
           ),
           SizedBox(height: 10),
-          Row(
-            children: [
-              Container(
-                margin: const EdgeInsets.only(left: 20, top: 20),
-                child: Text(
-                  "Today",
-                  style: TextStyle(
-                      fontSize: 30,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                ),
-              )
-            ],
-          ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.only(bottom:20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(left: 20, top: 20),
+                          child: Text(
+                            "Today",
+                            style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.white,
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        )
+                      ],
+                    ),
+
           SizedBox(height: 15),
           CaloriesCard(),
           SizedBox(height: 20,),
@@ -70,9 +83,22 @@ class _DashboardScreenState extends State<DashboardScreen> {
               WeightCard(),
             ],
           ),
-
+          SizedBox(height: 20,),
+          Row(
+            children: [
+              MonthlySummaryTable(),
+            ],
+          ),
+          SizedBox(height: 20,),
+      BMICard(),
+                  ],
+                ),
+              ),
+            ),
+          ),
         ],
       )),
     );
+
   }
 }

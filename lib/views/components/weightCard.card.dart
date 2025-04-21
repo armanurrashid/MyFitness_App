@@ -13,13 +13,13 @@ class WeightCard extends StatelessWidget {
           const SizedBox(width: 5),
           Text(
             "$label:",
-            style: TextStyle(color: app_colors.iconColor, fontSize: 17),
+            style: TextStyle(color: app_colors.iconColor, fontSize: 15),
             overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(width: 5),
           Text(
             value,
-            style: TextStyle(color: app_colors.iconColor, fontSize: 17),
+            style: TextStyle(color: app_colors.iconColor, fontSize: 15),
             overflow: TextOverflow.ellipsis,
           ),
         ],
@@ -31,7 +31,7 @@ class WeightCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 180,
-      height: 120,
+      height: 150,
       decoration: BoxDecoration(
         color: app_colors.cardColor,
         borderRadius: BorderRadius.circular(20),
@@ -50,9 +50,10 @@ class WeightCard extends StatelessWidget {
                 Icon(Icons.add, color: Colors.white),
               ],
             ),
-            const SizedBox(height: 10),
-            _buildInfoRow(Icons.access_alarm, Colors.red, "Current", "1200"),
-            _buildInfoRow(Icons.flag, Colors.blue, "Goal", "1200"),
+            const SizedBox(height: 15),
+            _buildInfoRow(Icons.local_fire_department, Colors.orange, "Current", "1200"),
+            SizedBox(height: 10,),
+            _buildInfoRow(Icons.flag, Colors.orange, "Goal", "1200"),
           ],
         ),
       ),

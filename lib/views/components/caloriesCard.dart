@@ -32,6 +32,7 @@ class CaloriesCard extends StatelessWidget {
                       "Calories",
                       style: TextStyle(
                         color: Colors.white,
+                        fontStyle: FontStyle.italic,
                         fontSize: 20,
                       ),
                     ),
