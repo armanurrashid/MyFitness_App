@@ -5,8 +5,10 @@ import 'package:my_fitness/views/components/caloriesCard.dart';
 import 'package:my_fitness/views/components/stepCard.dart';
 
 import 'components/InfoRow.dart';
+import 'components/graphSection.dart';
 import 'components/monthlySummaryTable.dart';
 import 'components/weightCard.card.dart';
+import 'components/weightPoints.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -18,12 +20,11 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: app_colors.blackBackground,
       body: SafeArea(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             margin: EdgeInsets.only(left: 20, right: 20, top: 10),
@@ -53,7 +54,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.only(bottom:20.0),
+                padding: const EdgeInsets.only(bottom: 20.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -72,25 +73,32 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         )
                       ],
                     ),
-
-          SizedBox(height: 15),
-          CaloriesCard(),
-          SizedBox(height: 20,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              StepCard(),
-              WeightCard(),
-            ],
-          ),
-          SizedBox(height: 20,),
-          Row(
-            children: [
-              MonthlySummaryTable(),
-            ],
-          ),
-          SizedBox(height: 20,),
-      BMICard(),
+                    SizedBox(height: 15),
+                    CaloriesCard(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        StepCard(),
+                        WeightCard(),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        MonthlySummaryTable(),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    BMICard(),
+                    SizedBox(height: 20,),
+                    GraphSection(weightPoints),
                   ],
                 ),
               ),
@@ -99,6 +107,5 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ],
       )),
     );
-
   }
 }
