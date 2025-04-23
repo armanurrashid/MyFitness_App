@@ -106,6 +106,34 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
         ],
       )),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: app_colors.blackBackground,
+        selectedItemColor: Colors.white, // Icon color when selected
+        unselectedItemColor: Colors.grey, // Icon color when not selected
+        selectedLabelStyle: TextStyle(color: Colors.white), // Label color when selected
+        unselectedLabelStyle: TextStyle(color: Colors.white),
+          currentIndex: 0,
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home",),
+            BottomNavigationBarItem(icon: Icon(Icons.book_rounded), label: "Diary"),
+            BottomNavigationBarItem(icon: Container(
+              margin: EdgeInsets.only(top: 10),
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.cyan,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(Icons.add, color: Colors.white,)),label: '',
+            ),
+            BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: "Sheet"),
+            BottomNavigationBarItem(icon: Icon(Icons.bloodtype), label: "Period"),
+          ],
+      onTap: (int index){
+          if(index==0){
+            // Navigator.of(context).push(route)
+          }
+      },),
     );
   }
 }
