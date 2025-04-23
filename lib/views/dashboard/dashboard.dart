@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:my_fitness/colorList/colorList.dart' as app_colors;
-import 'package:my_fitness/views/components/bmiCard.dart';
-import 'package:my_fitness/views/components/caloriesCard.dart';
-import 'package:my_fitness/views/components/stepCard.dart';
-
-import 'components/InfoRow.dart';
-import 'components/graphSection.dart';
-import 'components/monthlySummaryTable.dart';
-import 'components/weightCard.card.dart';
-import 'components/weightPoints.dart';
+import 'package:my_fitness/views/dashboard/bmiCard.dart';
+import 'package:my_fitness/views/dashboard/caloriesCard.dart';
+import 'package:my_fitness/views/dashboard/stepCard.dart';
+import 'package:my_fitness/views/diary/dairy.dart';
+import '../dashboard/graphSection.dart';
+import '../dashboard/monthlySummaryTable.dart';
+import '../dashboard/weightCard.card.dart';
+import '../dashboard/weightPoints.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -130,8 +129,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
             BottomNavigationBarItem(icon: Icon(Icons.bloodtype), label: "Period"),
           ],
       onTap: (int index){
-          if(index==0){
-            // Navigator.of(context).push(route)
+          if(index==1){
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => DiaryScreen()));
           }
       },),
     );

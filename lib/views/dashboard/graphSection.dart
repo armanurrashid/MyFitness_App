@@ -1,7 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:my_fitness/colorList/colorList.dart' as app_colors;
-import 'package:my_fitness/views/components/weightPoints.dart';
+import 'package:my_fitness/views/dashboard/weightPoints.dart';
 
 class GraphSection extends StatelessWidget {
   final List<WeightPoint> points;

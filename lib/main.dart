@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_fitness/views/dashboard.dart';
+import 'package:my_fitness/views/dashboard/dashboard.dart';
 
 void main() {
   runApp(const MyApp());

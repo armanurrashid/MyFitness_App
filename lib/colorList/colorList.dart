@@ -5,6 +5,9 @@ final Color appTitle = Color(0xFF519BFE);
 final Color cardColor = Color(0xFF252734);
 final Color subHeading = Color(0xFF686B74);
 final Color iconColor = Color(0xFF9B9FA2);
+final Color white = Color(0xFFfdfdfd);
+final Color diaryBackground = Color(0xFF1C1E2A);
+final Color addColor = Color(0xFF4E7DB9);
 
 
 final Color weightColor = Color(0xFFf9d263);
