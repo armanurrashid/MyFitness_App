@@ -4,6 +4,7 @@ import 'package:my_fitness/views/dashboard/bmiCard.dart';
 import 'package:my_fitness/views/dashboard/caloriesCard.dart';
 import 'package:my_fitness/views/dashboard/stepCard.dart';
 import 'package:my_fitness/views/diary/dairy.dart';
+import 'package:my_fitness/views/sheetScreen/sheet.dart';
 import '../dashboard/graphSection.dart';
 import '../dashboard/monthlySummaryTable.dart';
 import '../dashboard/weightCard.card.dart';
@@ -129,8 +130,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
             BottomNavigationBarItem(icon: Icon(Icons.bloodtype), label: "Period"),
           ],
       onTap: (int index){
-          if(index==1){
+        if(index==0){
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => DashboardScreen()));
+        }
+         else if(index==1){
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => DiaryScreen()));
+          }
+          else if(index==3){
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Sheet()));
           }
       },),
     );
