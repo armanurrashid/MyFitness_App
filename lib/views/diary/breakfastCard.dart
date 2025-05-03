@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_fitness/colorList/colorList.dart' as app_colors;
+import 'package:my_fitness/views/diary/addFood.dart';
 
 class BreakfastCard extends StatelessWidget {
   const BreakfastCard({super.key});
@@ -35,7 +36,9 @@ class BreakfastCard extends StatelessWidget {
               ),
               TextButton(
                 child: Text("+ ADD FOOD", style: TextStyle(color: app_colors.addColor, fontSize: 17),),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=> AddFood()));
+                },
               ),
             ],
           ),
